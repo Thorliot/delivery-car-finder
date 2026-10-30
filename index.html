@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery Car Finder</title>
+  <meta name="theme-color" content="#2b2350">
+  <meta name="description" content="Which used car actually pays for itself delivering for DoorDash? Enter your own numbers and every car's weekly profit, cost per mile and safe payment update live.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="static/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="static/icons/apple-touch-icon.png">
+  <script>
+    // Follow the OS light/dark setting (Bootstrap 5.3 color modes).
+    document.documentElement.dataset.bsTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css?v=20261030101437">
+  <link rel="stylesheet" href="static/public.css?v=20261030101437">
+</head>
+<body class="bg-body-tertiary app-body">
+
+<header class="app-header text-white mb-4">
+  <svg class="app-header-scene" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="scene-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" class="scene-sky-top"/><stop offset=".42" class="scene-sky-mid"/>
+        <stop offset=".7" class="scene-sky-low"/><stop offset=".86" class="scene-sky-horizon"/>
+      </linearGradient>
+      <linearGradient id="scene-sun-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffe7a3"/><stop offset="1" stop-color="#f08a3c"/>
+      </linearGradient>
+      <mask id="scene-sun-bands">
+        <rect width="1440" height="320" fill="#fff"/>
+        <g fill="#000"><rect x="760" y="196" width="280" height="4"/><rect x="760" y="206" width="280" height="6"/><rect x="760" y="218" width="280" height="8"/></g>
+      </mask>
+    </defs>
+    <rect width="1440" height="320" fill="url(#scene-sky)"/>
+    <g class="scene-stars" fill="#fff">
+      <circle cx="120" cy="40" r="1.4"/><circle cx="260" cy="90" r="1"/><circle cx="410" cy="30" r="1.6"/><circle cx="560" cy="70" r="1"/>
+      <circle cx="690" cy="22" r="1.3"/><circle cx="830" cy="58" r="1"/><circle cx="980" cy="34" r="1.5"/><circle cx="1110" cy="84" r="1"/>
+      <circle cx="1240" cy="26" r="1.3"/><circle cx="1360" cy="66" r="1.1"/><circle cx="340" cy="140" r=".9"/><circle cx="1180" cy="150" r=".9"/>
+    </g>
+    <circle class="scene-moon" cx="880" cy="150" r="20" fill="#f5ecd7"/>
+    <circle class="scene-sun" cx="900" cy="214" r="74" mask="url(#scene-sun-bands)"/>
+    <path class="scene-far" d="M0 232 L70 228 L92 204 L188 204 L206 226 L330 230 L352 214 L410 214 L428 228 L560 234 L640 222 L700 236
+      L780 236 L860 226 L880 208 L990 208 L1006 224 L1120 230 L1150 212 L1236 212 L1258 230 L1360 226 L1440 232 V320 H0 Z"/>
+    <path class="scene-mid" d="M0 256 L40 250 L58 226 L150 226 L170 244 L260 250 L300 246 L330 256 L600 252 L700 240 L740 240
+      L840 252 L1100 256 L1130 246 L1210 244 L1226 222 L1330 222 L1348 246 L1440 250 V320 H0 Z"/>
+    <path class="scene-near" d="M0 276 L120 268 L180 272 L300 262 L420 270 L560 260 L700 252 L740 252 L880 262 L1040 270
+      L1160 264 L1300 272 L1440 266 V320 H0 Z"/>
+    <path class="scene-ground" d="M0 296 L360 284 L700 262 L740 262 L1080 284 L1440 296 V320 H0 Z"/>
+    <path class="scene-road" d="M708 252 L732 252 L1010 320 L430 320 Z"/>
+    <g class="scene-line">
+      <path d="M719 256 L721 256 L722.4 262 L717.6 262 Z"/><path d="M716.8 268 L723.2 268 L725 278 L715 278 Z"/>
+      <path d="M713.6 288 L726.4 288 L729 302 L711 302 Z"/><path d="M709.4 312 L730.6 312 L732 320 L708 320 Z"/>
+    </g>
+    <!-- Joshua trees, the Mojave's signature -->
+    <g class="scene-tree">
+      <path d="M232 284 V244 l-10 -12 v-8 h4 v6 l8 10 v-18 l-8 -10 v-7 h4 v5 l6 8 v-12 h5 v26 l9 -11 v-9 h4 v11 l-13 16 V284 Z"/>
+      <path d="M1236 286 V252 l-8 -9 v-6 h3 v4 l6 7 v-14 l-7 -8 v-6 h3 v4 l5 6 v-10 h4 v22 l7 -9 v-8 h3 v9 l-10 13 V286 Z"/>
+      <path d="M118 290 V266 l-6 -7 v-5 h3 v3 l4 5 v-10 h3 v14 l5 -6 v-5 h3 v6 l-8 9 V290 Z"/>
+      <path d="M1352 292 V270 l-6 -6 v-5 h3 v3 l4 4 v-9 h3 v12 l5 -6 v-4 h3 v5 l-8 9 V292 Z"/>
+    </g>
+  </svg>
+  <div class="container-xl pt-3">
+    <div class="d-flex align-items-center gap-3">
+      <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-car-side"></i></span>
+      <div>
+        <h1 class="h3 mb-0 brand-title">Delivery Car Finder</h1>
+        <p class="mb-0 brand-sub">Which used car pays for itself delivering? Put in your numbers and see.</p>
+      </div>
+    </div>
+    <ul class="nav nav-tabs border-0 mt-3" id="tabs" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-cars" data-tab="cars" type="button"><i class="fa-solid fa-car-side me-1"></i>Cars</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-compare" data-tab="compare" type="button"><i class="fa-solid fa-table me-1"></i>Compare</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-guide" data-tab="guide" type="button"><i class="fa-solid fa-book-open me-1"></i>Guide</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-about" data-tab="about" type="button"><i class="fa-solid fa-circle-info me-1"></i>How it works</button></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container-xl pb-5">
+  <div class="row g-4">
+    <!-- Your numbers: a sidebar on large screens, a slide-out panel on phones and tablets -->
+    <aside class="col-lg-4 col-xl-3">
+      <div class="offcanvas-lg offcanvas-start calc-panel" tabindex="-1" id="calc" aria-labelledby="calc-title">
+        <div class="offcanvas-header">
+          <h2 class="offcanvas-title h5" id="calc-title"><i class="fa-solid fa-sliders me-2 text-primary"></i>Your numbers</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#calc" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-lg-0 flex-column">
+          <form id="calc-form" class="card shadow-sm w-100" autocomplete="off" novalidate>
+            <div class="card-header d-none d-lg-flex align-items-center"><i class="fa-solid fa-sliders me-2 text-primary"></i>Your numbers</div>
+            <div class="card-body vstack gap-3 small" id="calc-fields"></div>
+            <div class="card-footer d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-sm btn-outline-primary" id="calc-share"><i class="fa-solid fa-link me-1"></i>Copy link</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="calc-reset"><i class="fa-solid fa-rotate-left me-1"></i>Reset</button>
+            </div>
+          </form>
+          <p class="form-text mt-2 mb-0">Saved on this device only. Nothing you type is sent anywhere.</p>
+        </div>
+      </div>
+    </aside>
+
+    <main class="col-lg-8 col-xl-9 tab-content">
+      <!-- Live summary of the numbers, on every tab -->
+      <div class="card shadow-sm mb-4 summary-card">
+        <div class="card-body d-flex flex-wrap align-items-center gap-3">
+          <div class="flex-grow-1" id="summary"></div>
+          <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#calc" aria-controls="calc">
+            <i class="fa-solid fa-sliders me-1"></i>Edit my numbers</button>
+        </div>
+      </div>
+
+      <section id="tab-cars" class="tab-pane fade show active" role="tabpanel">
+        <div class="row g-2 align-items-end mb-3">
+          <div class="col-12 col-sm-6 col-xl-4"><label class="form-label small mb-1" for="f-q">Search</label>
+            <input id="f-q" class="form-control" type="search" placeholder="Prius, Civic, Bakersfield…"></div>
+          <div class="col-6 col-sm-3 col-xl-2"><label class="form-label small mb-1" for="f-max">Max price</label>
+            <select id="f-max" class="form-select"><option value="">Any</option><option>4000</option><option>6000</option><option>8000</option><option>10000</option></select></div>
+          <div class="col-6 col-sm-3 col-xl-3"><label class="form-label small mb-1" for="f-sort">Sort by</label>
+            <select id="f-sort" class="form-select">
+              <option value="net">Take-home per week</option><option value="payoff">Fastest to pay off</option>
+              <option value="cpm">Lowest cost per mile</option><option value="price">Lowest price</option><option value="rel">Most reliable</option>
+            </select></div>
+          <div class="col-12 col-xl-3 small text-body-secondary" id="f-count"></div>
+        </div>
+        <div id="cars" class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-3"></div>
+      </section>
+
+      <section id="tab-compare" class="tab-pane fade" role="tabpanel">
+        <p class="text-body-secondary small">Every car at your weekly deliveries. Tap a column to sort, tap a car for details.</p>
+        <div class="table-responsive card shadow-sm">
+          <table class="table table-hover table-sm align-middle mb-0 small" id="compare"></table>
+        </div>
+      </section>
+
+      <section id="tab-guide" class="tab-pane fade" role="tabpanel">
+        <div id="guide" class="row row-cols-1 row-cols-xl-2 g-3"></div>
+      </section>
+
+      <section id="tab-about" class="tab-pane fade" role="tabpanel">
+        <div class="card shadow-sm"><div class="card-body" id="about"></div></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- One car, in detail -->
+<div class="modal fade" id="car-modal" tabindex="-1" aria-labelledby="car-modal-title" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="car-modal-title"></h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="car-modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" id="toasts"></div>
+
+<footer class="app-footer text-center small py-4">
+  <svg class="footer-rim" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0 0 H1440 V18 L1380 22 L1352 40 L1270 40 L1250 26 L1120 24 L1040 30 L1000 46 L900 46 L880 30 L760 26
+      L640 32 L600 44 L520 44 L500 28 L380 24 L300 30 L270 48 L170 48 L150 30 L60 26 L0 30 Z"/>
+  </svg>
+  <div class="container-xl">
+    <div class="mb-1"><i class="fa-solid fa-route me-1"></i>Drive safe out there.</div>
+    <span id="data-date"></span> · Estimates only, not financial advice · Not affiliated with DoorDash
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="static/public.js?v=20261030101437"></script>
+</body>
+</html>

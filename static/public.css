@@ -1,0 +1,26 @@
+/* Public Delivery Car Finder: extra pieces on top of the shared desert theme (static/style.css). */
+.app-header .nav-tabs { padding-top: 2.5rem; }
+.brand-mark { display: grid; place-items: center; width: 3.25rem; height: 3.25rem; flex: 0 0 auto; border-radius: 50%;
+  background: #fffaf3; color: #a84a23; font-size: 1.5rem; box-shadow: 0 3px 8px rgba(0, 0, 0, .45); }
+
+/* Your numbers: sticky sidebar on large screens */
+@media (min-width: 992px) {
+  .calc-panel { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
+}
+.calc-panel .form-text { font-size: .75rem; }
+.calc-panel legend { color: var(--bs-heading-color); }
+.offcanvas-lg.calc-panel { --bs-offcanvas-bg: var(--rcf-sand); }
+
+.summary-card { border-left: 4px solid var(--bs-primary); }
+
+/* Metric tiles on each car */
+.metric { background: var(--rcf-sand); border: 1px solid var(--rcf-line); }
+.metric-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--bs-secondary-color); }
+.metric-value { font-weight: 800; font-size: 1.05rem; line-height: 1.2; }
+.metric-value small { font-weight: 600; font-size: .7rem; color: var(--bs-secondary-color); }
+.car-photo img { width: 100%; height: 100%; }
+
+.modal-photo { aspect-ratio: 4 / 3; object-fit: contain; }
+#compare th[data-sort] { cursor: pointer; user-select: none; }
+#compare td a { font-weight: 600; }
+#compare td:first-child, #compare th:first-child { min-width: 13rem; }

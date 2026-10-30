@@ -1,0 +1,269 @@
+/* Desert canyon road-trip theme. Bootstrap does the layout and components; this re-colors them
+   (sandstone, canyon red, sage, ochre, dusk sky) and adds the road/strata details. */
+:root, [data-bs-theme="light"] {
+  --rcf-sand: #f5eadb;          /* page */
+  --rcf-sand-deep: #ecdcc6;
+  --rcf-card: #fffaf3;          /* cards, inputs */
+  --rcf-ink: #3b2a20;
+  --rcf-line: #e2cfb6;
+  --rcf-asphalt: #3a2c26;
+  --rcf-stripe: #f2c14e;        /* road centerline */
+  --rcf-strata: rgba(168, 74, 35, .07);
+  --rcf-shadow: rgba(91, 48, 24, .28);
+
+  --bs-body-font-family: "Overpass", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bs-body-bg: var(--rcf-card);
+  --bs-body-bg-rgb: 255, 250, 243;
+  --bs-body-color: var(--rcf-ink);
+  --bs-body-color-rgb: 59, 42, 32;
+  --bs-secondary-color: rgba(59, 42, 32, .78);
+  --bs-tertiary-color: rgba(59, 42, 32, .55);
+  --bs-secondary-bg: var(--rcf-sand-deep);
+  --bs-tertiary-bg: var(--rcf-sand);
+  --bs-tertiary-bg-rgb: 245, 234, 219;
+  --bs-border-color: var(--rcf-line);
+  --bs-border-color-translucent: rgba(91, 48, 24, .16);
+  --bs-heading-color: #4a2a1c;
+  --bs-emphasis-color: #24170f;
+  --bs-border-radius: .5rem;
+  --bs-border-radius-lg: .75rem;
+
+  --bs-primary: #a84a23; --bs-primary-rgb: 168, 74, 35;            /* canyon terracotta */
+  --bs-primary-bg-subtle: #f6dccb; --bs-primary-border-subtle: #e2a582; --bs-primary-text-emphasis: #6e2c12;
+  --bs-secondary: #6a5870; --bs-secondary-rgb: 106, 88, 112;         /* dusk mauve */
+  --bs-secondary-bg-subtle: #ece5ee; --bs-secondary-border-subtle: #cbbdcf; --bs-secondary-text-emphasis: #42344a;
+  --bs-success: #55703f; --bs-success-rgb: 85, 112, 63;              /* creosote sage */
+  --bs-success-bg-subtle: #e4ecd9; --bs-success-border-subtle: #b9cba5; --bs-success-text-emphasis: #34472a;
+  --bs-danger: #9e2f2a; --bs-danger-rgb: 158, 47, 42;                /* rust */
+  --bs-danger-bg-subtle: #f6d9d5; --bs-danger-border-subtle: #e2a59f; --bs-danger-text-emphasis: #6a1d1a;
+  --bs-warning: #e0a03a; --bs-warning-rgb: 224, 160, 58;             /* ochre */
+  --bs-warning-bg-subtle: #fbecd0; --bs-warning-border-subtle: #efcb8c; --bs-warning-text-emphasis: #6b4609;
+  --bs-info: #2f6d84; --bs-info-rgb: 47, 109, 132;                   /* desert sky */
+  --bs-info-bg-subtle: #d9eaf0; --bs-info-border-subtle: #a6c9d6; --bs-info-text-emphasis: #1c4655;
+  --bs-light: #f5eadb; --bs-light-rgb: 245, 234, 219;
+  --bs-dark: #2b1d14; --bs-dark-rgb: 43, 29, 20;
+  --bs-link-color: #a84a23; --bs-link-color-rgb: 168, 74, 35;
+  --bs-link-hover-color: #7f3417; --bs-link-hover-color-rgb: 127, 52, 23;
+  --bs-focus-ring-color: rgba(168, 74, 35, .25);
+}
+[data-bs-theme="dark"] {                                    /* the same desert after sunset */
+  --rcf-sand: #1c1613;
+  --rcf-sand-deep: #2d231e;
+  --rcf-card: #231b17;
+  --rcf-ink: #eadccb;
+  --rcf-line: #4a3a31;
+  --rcf-asphalt: #120d0b;
+  --rcf-strata: rgba(227, 135, 90, .05);
+  --rcf-shadow: rgba(0, 0, 0, .55);
+  --bs-body-bg-rgb: 35, 27, 23;
+  --bs-body-color-rgb: 234, 220, 203;
+  --bs-secondary-color: rgba(234, 220, 203, .75);
+  --bs-tertiary-color: rgba(234, 220, 203, .5);
+  --bs-tertiary-bg-rgb: 28, 22, 19;
+  --bs-border-color-translucent: rgba(234, 220, 203, .14);
+  --bs-heading-color: #f3e4d2;
+  --bs-emphasis-color: #fff6ea;
+
+  --bs-primary: #e3875a; --bs-primary-rgb: 227, 135, 90;
+  --bs-primary-bg-subtle: #3d2418; --bs-primary-border-subtle: #7a3a1f; --bs-primary-text-emphasis: #f5b791;
+  --bs-secondary: #a897ad; --bs-secondary-rgb: 168, 151, 173;
+  --bs-secondary-bg-subtle: #2c2530; --bs-secondary-border-subtle: #4f4354; --bs-secondary-text-emphasis: #d6cbd9;
+  --bs-success: #93b07a; --bs-success-rgb: 147, 176, 122;
+  --bs-success-bg-subtle: #222b1b; --bs-success-border-subtle: #3f5230; --bs-success-text-emphasis: #bcd3a8;
+  --bs-danger: #e07a70; --bs-danger-rgb: 224, 122, 112;
+  --bs-danger-bg-subtle: #361917; --bs-danger-border-subtle: #6d2a25; --bs-danger-text-emphasis: #f0aaa2;
+  --bs-warning: #e8b45c; --bs-warning-rgb: 232, 180, 92;
+  --bs-warning-bg-subtle: #352812; --bs-warning-border-subtle: #6b4f1d; --bs-warning-text-emphasis: #f3d08f;
+  --bs-info: #6fb1c8; --bs-info-rgb: 111, 177, 200;
+  --bs-info-bg-subtle: #14272e; --bs-info-border-subtle: #2b5262; --bs-info-text-emphasis: #a8d3e2;
+  --bs-light: #3a2e28; --bs-light-rgb: 58, 46, 40;
+  --bs-dark: #0f0b09; --bs-dark-rgb: 15, 11, 9;
+  --bs-link-color: #f0a070; --bs-link-color-rgb: 240, 160, 112;
+  --bs-link-hover-color: #f8c4a2; --bs-link-hover-color-rgb: 248, 196, 162;
+  --bs-focus-ring-color: rgba(227, 135, 90, .3);
+}
+
+/* Road-sign lettering (Overpass is modeled on the US highway-sign typeface) */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .nav-link, .btn, .badge, .modal-title, .card-header {
+  font-family: var(--bs-body-font-family); letter-spacing: .01em;
+}
+h1, h2, h3, .h1, .h2, .h3 { font-weight: 800; }
+.btn, .nav-link, .badge { font-weight: 600; }
+
+/* Buttons: Bootstrap bakes its colors into each .btn-* class, so point them at the theme */
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-dark {
+  --bs-btn-color: #fff; --bs-btn-hover-color: #fff; --bs-btn-active-color: #fff; --bs-btn-disabled-color: #fff;
+}
+.btn-primary { --rcf-c: var(--bs-primary-rgb); }
+.btn-secondary { --rcf-c: var(--bs-secondary-rgb); }
+.btn-success { --rcf-c: var(--bs-success-rgb); }
+.btn-danger { --rcf-c: var(--bs-danger-rgb); }
+.btn-dark { --rcf-c: var(--bs-dark-rgb); }
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-dark {
+  --bs-btn-bg: rgb(var(--rcf-c)); --bs-btn-border-color: rgb(var(--rcf-c));
+  --bs-btn-hover-bg: color-mix(in srgb, rgb(var(--rcf-c)) 82%, #000); --bs-btn-hover-border-color: var(--bs-btn-hover-bg);
+  --bs-btn-active-bg: color-mix(in srgb, rgb(var(--rcf-c)) 70%, #000); --bs-btn-active-border-color: var(--bs-btn-active-bg);
+  --bs-btn-disabled-bg: rgb(var(--rcf-c)); --bs-btn-disabled-border-color: rgb(var(--rcf-c));
+  --bs-btn-focus-shadow-rgb: var(--rcf-c);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .18);
+}
+[data-bs-theme="dark"] :is(.btn-primary, .btn-secondary, .btn-success, .btn-danger) {
+  --bs-btn-color: #1c1613; --bs-btn-hover-color: #1c1613; --bs-btn-active-color: #1c1613; --bs-btn-disabled-color: #1c1613;
+  --bs-btn-hover-bg: color-mix(in srgb, rgb(var(--rcf-c)) 85%, #fff); --bs-btn-active-bg: color-mix(in srgb, rgb(var(--rcf-c)) 75%, #fff);
+}
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-danger {
+  --bs-btn-color: rgb(var(--rcf-c)); --bs-btn-border-color: rgba(var(--rcf-c), .6);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: rgb(var(--rcf-c)); --bs-btn-hover-border-color: rgb(var(--rcf-c));
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: rgb(var(--rcf-c)); --bs-btn-active-border-color: rgb(var(--rcf-c));
+  --bs-btn-focus-shadow-rgb: var(--rcf-c);
+}
+.btn-outline-primary { --rcf-c: var(--bs-primary-rgb); }
+.btn-outline-secondary { --rcf-c: var(--bs-secondary-rgb); }
+.btn-outline-danger { --rcf-c: var(--bs-danger-rgb); }
+[data-bs-theme="dark"] :is(.btn-outline-primary, .btn-outline-secondary, .btn-outline-danger) { --bs-btn-hover-color: #1c1613; --bs-btn-active-color: #1c1613; }
+.btn-light { --bs-btn-bg: var(--rcf-card); --bs-btn-border-color: var(--rcf-line); --bs-btn-color: var(--rcf-ink);
+  --bs-btn-hover-bg: var(--rcf-sand-deep); --bs-btn-hover-border-color: var(--rcf-line); --bs-btn-hover-color: var(--rcf-ink); }
+[data-bs-theme="dark"] :is(.text-bg-primary, .text-bg-success, .text-bg-danger, .text-bg-secondary, .text-bg-info) { color: #1c1613 !important; }
+
+.form-control, .form-select { background-color: var(--rcf-card); }
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+  border-color: var(--bs-primary-border-subtle);
+  box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .2);
+}
+.form-check-input:checked { background-color: var(--bs-primary); border-color: var(--bs-primary); }
+.accordion { --bs-accordion-active-bg: var(--bs-primary-bg-subtle); --bs-accordion-active-color: var(--bs-primary-text-emphasis);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .2); }
+.table { --bs-table-bg: transparent; }
+.table-light { --bs-table-bg: var(--rcf-sand); --bs-table-color: var(--rcf-ink); --bs-table-border-color: var(--rcf-line); }
+.table-primary { --bs-table-bg: var(--bs-primary-bg-subtle); --bs-table-color: var(--bs-primary-text-emphasis); --bs-table-border-color: var(--bs-primary-border-subtle); }
+.table-warning { --bs-table-bg: var(--bs-warning-bg-subtle); --bs-table-color: var(--bs-warning-text-emphasis); --bs-table-border-color: var(--bs-warning-border-subtle); }
+.nav-pills { --bs-nav-pills-link-active-bg: var(--bs-primary); }
+.progress { --bs-progress-bg: var(--rcf-sand-deep); --bs-progress-bar-bg: var(--bs-primary); }
+.list-group { --bs-list-group-bg: var(--rcf-card); --bs-list-group-border-color: var(--rcf-line);
+  --bs-list-group-active-bg: var(--bs-primary); --bs-list-group-active-border-color: var(--bs-primary); }
+.toast { --bs-toast-bg: var(--rcf-card); }
+
+/* Page: sand with faint wind-carved rock strata */
+body.app-body {
+  background-color: var(--rcf-sand) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120'%3E%3Cg fill='none' stroke='%23a84a23' stroke-opacity='.08' stroke-width='1.5'%3E%3Cpath d='M0 18 Q60 6 120 18 T240 18'/%3E%3Cpath d='M0 46 Q60 58 120 46 T240 46'/%3E%3Cpath d='M0 74 Q60 64 120 76 T240 74'/%3E%3Cpath d='M0 104 Q60 114 120 102 T240 104'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+[data-bs-theme="dark"] body.app-body { background-image: none; }
+
+/* Cards: sun-baked paper with a canyon-red top edge */
+.card {
+  --bs-card-bg: var(--rcf-card); --bs-card-border-color: var(--rcf-line);
+  --bs-card-cap-bg: color-mix(in srgb, var(--rcf-sand) 70%, var(--rcf-card));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 10px 24px -16px var(--rcf-shadow);
+}
+.card-header { font-weight: 700; border-bottom-color: var(--rcf-line); }
+.car-card { border-top: 4px solid var(--bs-primary); }
+.car-card.status-bought { border-top-color: var(--bs-success); }
+.car-card.status-passed, .car-card.status-sold { border-top-color: var(--bs-secondary); }
+.modal { --bs-modal-bg: var(--rcf-card); --bs-modal-border-color: var(--rcf-line); }
+.modal-header { background: linear-gradient(90deg, var(--bs-primary-bg-subtle), transparent 80%); }
+
+/* <hr> becomes a stretch of two-lane road */
+main hr, .rcf-app hr {
+  border: 0; height: 10px; opacity: 1; border-radius: 3px; margin-block: 1.75rem;
+  background:
+    repeating-linear-gradient(90deg, var(--rcf-stripe) 0 28px, transparent 28px 52px) center / 100% 2px no-repeat,
+    var(--rcf-asphalt);
+}
+
+/* Header: a dusk drive toward the Sierra (scene drawn in index.html) */
+/* overflow stays visible so the menus can drop below the header; the scene SVG clips itself. z-index keeps the open menus above the page. */
+.app-header { position: relative; isolation: isolate; z-index: 20; background: #2b2350; }
+.app-header-scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.app-header .brand-title { color: #fff; text-shadow: 0 2px 10px rgba(20, 10, 30, .6); }
+.app-header .brand-sub { color: #f6dccb; text-shadow: 0 1px 6px rgba(20, 10, 30, .7); }
+.app-header .route-shield { width: 3.25rem; height: 3.25rem; flex: 0 0 auto; filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .45)); }
+.app-header .nav-tabs { padding-top: 3.25rem; }
+.app-header .nav-link { color: rgba(255, 246, 234, .92); white-space: nowrap; text-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background: rgba(24, 14, 10, .45); margin-right: .25rem; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+.app-header .nav-link:hover { color: #fff; border-color: transparent; background: rgba(24, 14, 10, .65); }
+.app-header .nav-link.active { color: var(--bs-body-color); background: var(--rcf-sand); border-color: transparent; text-shadow: none; }
+.app-header .nav-link .badge { text-shadow: none; }
+/* Menus (Cars / Money / Fundraise) */
+.app-header .dropdown-menu {
+  --bs-dropdown-bg: var(--rcf-card); --bs-dropdown-border-color: var(--rcf-line);
+  --bs-dropdown-link-color: var(--rcf-ink); --bs-dropdown-link-hover-bg: var(--rcf-sand);
+  --bs-dropdown-link-active-bg: var(--bs-primary); --bs-dropdown-link-active-color: #fff;
+  --bs-dropdown-item-padding-y: .55rem; box-shadow: 0 12px 28px -12px var(--rcf-shadow); min-width: 13rem;
+}
+.app-header .dropdown-item { font-weight: 600; }
+.app-header .dropdown-item.active .badge { background: #fff !important; color: var(--bs-primary) !important; }
+[data-bs-theme="dark"] .app-header .dropdown-menu { --bs-dropdown-link-active-color: #1c1613; }
+/* Four menus fit across a phone without sideways scrolling (and wrap, never scroll, if they can't) */
+@media (max-width: 575.98px) {
+  .app-header .nav-tabs { gap: .15rem; }
+  .app-header .nav-link { padding: .5rem .6rem; font-size: .95rem; margin-right: 0; }
+}
+@media (max-width: 439.98px) {
+  .app-header .nav-tabs > .nav-item > .nav-link > .fa-solid { display: none; }
+}
+@media (max-width: 359.98px) {
+  .app-header .nav-link { padding: .45rem .4rem; font-size: .86rem; }
+}
+/* Scene colors: dusk in light mode, a starry night in dark mode */
+.scene-sky-top { stop-color: #2b2350; } .scene-sky-mid { stop-color: #7a3b5e; } .scene-sky-low { stop-color: #d0603a; } .scene-sky-horizon { stop-color: #f3b257; }
+.scene-far { fill: #8f4f63; } .scene-mid { fill: #9b3f2a; } .scene-near { fill: #4f2717; } .scene-ground { fill: #3d2318; }
+.scene-road { fill: #2a1f1b; } .scene-line { fill: #f2c14e; } .scene-tree { fill: #2a140c; }
+.scene-sun { fill: url(#scene-sun-grad); } .scene-moon, .scene-stars { display: none; }
+[data-bs-theme="dark"] .scene-sky-top { stop-color: #070a1c; } [data-bs-theme="dark"] .scene-sky-mid { stop-color: #161838; }
+[data-bs-theme="dark"] .scene-sky-low { stop-color: #33264a; } [data-bs-theme="dark"] .scene-sky-horizon { stop-color: #5c3848; }
+[data-bs-theme="dark"] .scene-far { fill: #3a2638; } [data-bs-theme="dark"] .scene-mid { fill: #3b1f1c; }
+[data-bs-theme="dark"] .scene-near { fill: #22120c; } [data-bs-theme="dark"] .scene-ground { fill: #1a0f0b; }
+[data-bs-theme="dark"] .scene-sun { display: none; }
+[data-bs-theme="dark"] .scene-moon, [data-bs-theme="dark"] .scene-stars { display: inline; }
+[data-bs-theme="dark"] .app-header .nav-link.active { background: var(--rcf-sand); }
+
+/* Footer: canyon rim silhouette */
+.app-footer { position: relative; margin-top: 3rem; padding-top: 4.5rem !important; border-top: 0 !important; color: #f6dccb !important; background: var(--rcf-asphalt); }
+.app-footer .footer-rim { position: absolute; left: 0; right: 0; top: -1px; width: 100%; height: 56px; }
+.app-footer .footer-rim path { fill: var(--rcf-sand); }
+.app-footer code { color: var(--rcf-stripe); }
+.app-footer a { color: #f6dccb; }
+
+/* Car cards */
+.car-photo { cursor: zoom-in; border: 0; padding: 0; position: relative; }
+.car-photo img { object-fit: cover; }
+.car-photo.ratio > .badge { top: auto; left: auto; width: auto; height: auto; right: .5rem; bottom: .5rem; }
+.car-card.status-passed, .car-card.status-sold { opacity: .6; }
+.rel-dots { letter-spacing: 1px; }
+.notes { white-space: pre-wrap; }
+
+/* Photo thumbnails in the editor */
+.thumb { position: relative; }
+.thumb img { cursor: zoom-in; object-fit: cover; }
+.thumb .btn { position: absolute; top: .25rem; right: .25rem; --bs-btn-padding-y: 0; --bs-btn-padding-x: .4rem; }
+
+/* Fullscreen photo viewer */
+#photo-carousel .carousel-inner { width: 100%; }
+#photo-carousel .carousel-item { height: 100%; }
+#photo-carousel .carousel-item img { width: 100%; height: calc(100vh - 150px); object-fit: contain; }
+/* Arrows on dark circles so they show up on any photo */
+#photo-carousel .photo-nav { width: 4.5rem; opacity: 1; }
+#photo-carousel .photo-nav span:first-child { width: 3rem; height: 3rem; border-radius: 50%; background-color: rgba(0, 0, 0, .55); background-size: 45%; }
+#photo-carousel .photo-nav:hover span:first-child { background-color: rgba(var(--bs-primary-rgb), .9); }
+#photo-thumbs .thumb-btn { flex: 0 0 auto; width: 76px; height: 57px; padding: 0; border: 2px solid transparent; border-radius: .375rem; overflow: hidden; opacity: .55; background: none; }
+#photo-thumbs .thumb-btn img { width: 100%; height: 100%; object-fit: cover; }
+#photo-thumbs .thumb-btn.active { border-color: var(--bs-primary); opacity: 1; }
+#pdf-modal .modal-body { height: calc(100vh - 56px); }
+
+.cmp-photo { width: 160px; aspect-ratio: 4 / 3; object-fit: cover; }
+.summary-flash { animation: flash 1s ease-out; }
+@keyframes flash { 0% { box-shadow: 0 0 0 .4rem rgba(var(--bs-primary-rgb), .6); } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+/* The photo viewer can open on top of the car editor */
+#photo-modal, #pdf-modal { z-index: 1065; }
+/* Keep the offline/install bar behind any open window */
+#pwa-bar { z-index: 1040 !important; }
+body.modal-open #pwa-bar { display: none !important; }
+
+/* Facebook's own blue, so it doesn't pick up the canyon "primary" */
+.text-bg-fb { color: #fff !important; background-color: #1877f2 !important; }
+
+/* Font Awesome icons: same width beside labels so tabs, headings and buttons line up */
+:is(.nav-link, .card-header, h2, h3, .btn, .badge, .list-group-item) > :is(.fa-solid, .fa-brands):first-child { width: 1.15em; text-align: center; }
