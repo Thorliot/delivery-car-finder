@@ -1,6 +1,6 @@
 /* Delivery Car Finder (public, static).
    Every number on the page is worked out here, in the browser, from the visitor's own inputs and the car list
-   in data/cars.json (written by tools/export_public_app.py). The math follows the private app's plan.py:
+   in data/cars.json (written by tools/export_public_app.py). The math matches the app's delivery.py:
    weekly earnings, miles, gas, maintenance, insurance and registration, then taxes, then living costs. */
 "use strict";
 
